@@ -1,0 +1,20 @@
+[package]
+name = "sentinel-ebpf"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+aya-ebpf = { version = "0.1", features = ["const-assert"] }
+aya-ebpf-macros = "0.1"
+aya-log-ebpf = "0.1"
+sentinel-ebpf-common = { path = "../sentinel-ebpf-common" }
+
+[lib]
+crate-type = ["cdylib"]
+
+[profile.release]
+lto = true
+debug = false
+strip = true
+opt-level = 3
+panic = "abort"
